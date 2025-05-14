@@ -1,0 +1,77 @@
+<div class="dekra-login-container">
+  <div class="dekra-login-card">
+    <!-- En-tête avec logo -->
+    <div class="text-center mb-4">
+       <img src="assets/images/dek.png" alt="DEKRA Logo" class="dekra-logo mb-3" style="height: 50px;"> 
+         <!-- <img src="C:\Users\DELL\dotnet-sqlserver-angular15-crud\angular-crud-application\src\app\assets\images\dekra.png" alt="DEKRA Logo" class="dekra-logo mb-3" style="height: 50px;">  -->
+       
+      <!-- <h2 class="dekra-title">Connexion</h2> -->
+    </div>
+
+    <!-- Formulaire -->
+    <form (ngSubmit)="login()">
+      <!-- Champ Nom d'utilisateur -->
+      <div class="form-group mb-3">
+        <label for="username" class="form-label">Nom d'utilisateur</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="username" 
+            [(ngModel)]="username" 
+            name="username"
+            placeholder="Nom d'utilisateur" 
+            required>
+        </div>
+      </div>
+
+      <!-- Champ Mot de passe -->
+      <div class="form-group mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            class="form-control" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password"
+            placeholder="Mot de passe"
+            required>
+          <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
+            <i class="bi" [ngClass]="{'bi-eye': !showPassword, 'bi-eye-slash': showPassword}"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe">
+        <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+      </div>
+
+      <!-- Bouton de Connexion -->
+      <button 
+        type="submit" 
+        class="btn btn-primary w-100 mb-3"
+        [disabled]="isLoading">
+        <span *ngIf="!isLoading">Se connecter</span>
+        <span *ngIf="isLoading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Connexion...
+        </span>
+      </button>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="message" class="alert alert-danger" [class.alert-success]="isSuccess">
+        {{ message }}
+      </div>
+    </form>
+
+    <!-- Pied de page -->
+    <div class="dekra-footer text-center mt-4">
+      <p class="text-muted small">© 2025 DEKRA. Tous droits réservés. v1.0.0</p>
+    </div>
+  </div>
+</div>

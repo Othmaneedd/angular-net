@@ -1,0 +1,33 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+.dekra-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.dekra-login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dekra-title {
+  color: #005BAA; /* Couleur bleue DEKRA */
+  font-weight: 600;
+}
+
+.dekra-footer {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+table {
+  cursor: pointer;
+  th {
+    user-select: none;
+  }
+}

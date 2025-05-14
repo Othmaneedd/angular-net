@@ -2,6 +2,8 @@
 using WebApi.Entities;
 using WebApi.Helpers;
 using WebApi.Models.Users;
+using System.Collections.Generic; // Add this
+using System.Linq;
 
 namespace WebApi.Services
 {

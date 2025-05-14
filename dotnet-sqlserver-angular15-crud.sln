@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "dotnet6-sqlserver-crud-application\WebApi.csproj", "{C552A4A5-8A64-209D-DAF6-3B30234190A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C552A4A5-8A64-209D-DAF6-3B30234190A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C552A4A5-8A64-209D-DAF6-3B30234190A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C552A4A5-8A64-209D-DAF6-3B30234190A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C552A4A5-8A64-209D-DAF6-3B30234190A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3DD9E8B-5199-44B2-912E-B1D9C9607D47}
+	EndGlobalSection
+EndGlobal

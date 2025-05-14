@@ -1,0 +1,95 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #173e43;
+  color: white;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  color: #bcd;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: white;
+  background-color: #206a5d;
+  border-radius: 5px;
+}
+
+.content {
+  background: #f8f9fa;
+  width: 100%;
+  padding: 20px;
+}
+
+.table th {
+  cursor: pointer;
+}
+
+button i {
+  margin-right: 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pagination .page-link {
+  border-radius: 5px;
+  padding: 8px 16px;
+  background-color: #e0e0e0;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #206a5d;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+}

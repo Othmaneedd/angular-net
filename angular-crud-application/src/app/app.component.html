@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-sm bg-success navbar-dark">
-  <!-- Links -->
+<!-- <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+  
+  
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" routerLinkActive="active" routerLink="/users-list"
@@ -10,13 +11,20 @@
       >Add Users</a
     >
     </li>
+    <div style="text-align: right; margin: 10px;">
+  <button (click)="toggleDarkMode()" class="btn btn-outline-secondary">
+    {{ isDarkMode ? '☀️ Mode Clair' : '🌙 Mode Sombre' }}
+  </button>
+    <button (click)="generateWord()">Télécharger le rapport</button>
+
+</div>
+
+
   </ul>
 </nav>
 <div class="container">
-  <br>
-  <h2 style="text-align: center;">{{title}}</h2>
-  <hr>  
   <router-outlet></router-outlet>
 </div>
+-->
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> 

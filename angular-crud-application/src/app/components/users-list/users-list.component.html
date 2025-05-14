@@ -1,38 +1,126 @@
-<div class="container">
-  <div
-    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-  >
-    <h2 class="h2">Users Collection</h2>
-  </div>
+<!-- users-list.component.html -->
+<div class="app-container d-flex">
+  <!-- Sidebar -->
+  <!-- Sidebar -->
+<div class="sidebar p-3">
+  <img src="assets/images/dek.png" alt="DEKRA Logo" class="dekra-logo mb-3" style="height: 50px;" />
+  <ul class="nav flex-column mt-4">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">
+        <i class="bi bi-speedometer2"></i> Dashboard
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">
+        <i class="bi bi-people-fill"></i> Users
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/settings']" routerLinkActive="active">
+        <i class="bi bi-gear-fill"></i> Settings
+      </a>
+    </li>
+  </ul>
+</div>
 
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Email</th>
-          <th class="text-center" scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of Users; let i = index">
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName }}</td>
-          <td>{{ user.email }}</td>
-          <td class="text-center">
-            <button
-              class="btn btn-sm btn-primary"
-              routerLink="/edit-user/{{ user.id }}"
-            >
-              Edit
-            </button>
-            <button class="btn btn-sm btn-danger" (click)="delete(user.id, i)">
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+  <!-- Main Content -->
+  <div class="content flex-grow-1 p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2><i class="bi bi-person-lines-fill"></i> Users</h2>
+      <button class="btn btn-success" (click)="exportUsers()">
+        <i class="bi bi-download"></i> Export
+      </button>  
+    </div>
+
+    <!-- Search & Add -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <input
+        type="text"
+        class="form-control w-50"
+        placeholder="Search..."
+        [(ngModel)]="searchText"
+        (input)="currentPage = 1"
+      />
+<a class="btn btn-primary" routerLink="/add-user" routerLinkActive="active">
+  <i class="bi bi-plus-circle"></i> Add User
+</a>
+    </div>
+
+    <!-- Users Table -->
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th (click)="sortBy('firstName')">
+              First Name
+              <span *ngIf="sortColumn === 'firstName'">
+                {{ sortDirection === 'asc' ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th (click)="sortBy('lastName')">
+              Last Name
+              <span *ngIf="sortColumn === 'lastName'">
+                {{ sortDirection === 'asc' ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th (click)="sortBy('email')">
+              Email
+              <span *ngIf="sortColumn === 'email'">
+                {{ sortDirection === 'asc' ? '↑' : '↓' }}
+              </span>
+            </th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of paginatedUsers; let i = index">
+            <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-warning" [routerLink]="['/edit-user', user.id]">
+                <i class="bi bi-pencil-square"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="delete(user.id, i)">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+              <button class="btn btn-sm btn-info text-white" [routerLink]="['/user', user.id]">
+                <i class="bi bi-eye"></i> Détails
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <!-- Pagination -->
+<nav *ngIf="totalPages > 1" class="mt-4">
+  <ul class="pagination justify-content-center gap-3">
+    <!-- <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="changePage(1)">«</a>
+    </li> -->
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="changePage(currentPage - 1)">‹</a>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="currentPage === i + 1"
+    >
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="changePage(currentPage + 1)">›</a>
+    </li>
+    <!-- <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="changePage(totalPages)">»</a>
+    </li> -->
+  </ul>
+</nav>
+
   </div>
 </div>
